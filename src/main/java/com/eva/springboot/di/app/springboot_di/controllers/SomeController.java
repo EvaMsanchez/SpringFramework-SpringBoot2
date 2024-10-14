@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eva.springboot.di.app.springboot_di.models.Product;
-import com.eva.springboot.di.app.springboot_di.services.ProductServiceImpl;
+import com.eva.springboot.di.app.springboot_di.services.ProductService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api")
 public class SomeController 
 {
-    private ProductServiceImpl service = new ProductServiceImpl();
+    // Inyectar una instancia, pero en vez de una concreta como ProductServiceImpl, inyectando mediante la interfaz
+    @Autowired
+    private ProductService service;
 
 
     @GetMapping

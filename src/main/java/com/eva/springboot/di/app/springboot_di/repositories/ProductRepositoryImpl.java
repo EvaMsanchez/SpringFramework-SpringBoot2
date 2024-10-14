@@ -3,11 +3,14 @@ package com.eva.springboot.di.app.springboot_di.repositories;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.eva.springboot.di.app.springboot_di.models.Product;
 
 
 // Simulación de base de datos, aquí se leen los datos, guardamos los datos
 // Implements: obliga a implementar todos los métodos de esa interface
+@Component // El contenedor crea la instancia, la guarda y se puede inyectar a otros componentes. Singleton: instancia única
 public class ProductRepositoryImpl implements ProductRepository
 {
     private List<Product> data;
