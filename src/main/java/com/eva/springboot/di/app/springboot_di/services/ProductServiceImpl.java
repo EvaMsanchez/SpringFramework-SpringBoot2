@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.eva.springboot.di.app.springboot_di.models.Product;
 import com.eva.springboot.di.app.springboot_di.repositories.ProductRepository;
 
 // Obtiene los datos del repositorio y puede trabajar con ellos (cálculos), interactuar con otro repositorio, combinar repositorios
-@Component // El contenedor crea la instancia, la guarda y se puede inyectar a otros componentes. Singleton: instancia única
+//@Component // El contenedor crea la instancia, la guarda y se puede inyectar a otros componentes. Singleton: instancia única
+@Service // Específico para trabajar con los datos
 public class ProductServiceImpl implements ProductService
 {
     // Comunicarnos
