@@ -3,7 +3,6 @@ package com.eva.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eva.springboot.di.app.springboot_di.models.Product;
@@ -19,8 +18,18 @@ public class ProductServiceImpl implements ProductService
 
     // Ahora no se instancia el objeto, el contenedor nos llama y nos provee inyecta una instancia
     // Inyectar una instancia, pero en vez de una concreta como ProductRepositoryImpl, inyectando mediante la interfaz más genérica
-    @Autowired
+    // @Autowired
     private ProductRepository repository;
+
+    /*@Autowired - inyección mediante método setter
+    public void setRepository(ProductRepository repository) {
+        this.repository = repository;
+    }*/
+
+    // inyección mediante el constructor, no necesita @Autowired
+    public ProductServiceImpl(ProductRepository repository) {
+        this.repository = repository;
+    }
 
 
     @Override

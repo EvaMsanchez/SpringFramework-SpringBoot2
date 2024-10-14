@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SomeController 
 {
     // Inyectar una instancia, pero en vez de una concreta como ProductServiceImpl, inyectando mediante la interfaz
-    @Autowired
+    @Autowired // inyección mediante el atributo
     private ProductService service;
 
 
