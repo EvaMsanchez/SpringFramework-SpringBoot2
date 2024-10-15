@@ -3,6 +3,7 @@ package com.eva.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.eva.springboot.di.app.springboot_di.models.Product;
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService
     }*/
 
     // inyección mediante el constructor, no necesita @Autowired
-    public ProductServiceImpl(ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
         this.repository = repository;
     }
 
