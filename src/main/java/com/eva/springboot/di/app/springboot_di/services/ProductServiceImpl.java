@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService
     }*/
 
     // inyección mediante el constructor, no necesita @Autowired
-    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
+    public ProductServiceImpl(ProductRepository repository) {
         this.repository = repository;
     }
 

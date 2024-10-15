@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
+//import org.springframework.web.context.annotation.RequestScope;
+//import org.springframework.web.context.annotation.SessionScope;
 
 import com.eva.springboot.di.app.springboot_di.models.Product;
 
@@ -12,6 +14,7 @@ import com.eva.springboot.di.app.springboot_di.models.Product;
 // Simulación de base de datos, aquí se leen los datos, guardamos los datos
 // Implements: obliga a implementar todos los métodos de esa interface
 //@Component // El contenedor crea la instancia, la guarda y se puede inyectar a otros componentes. Singleton: instancia única
+//@RequestScope
 @Primary
 @Repository("productList") // Componente específico (DAO) Repository indica que es de acceso a datos, como sistema de almacenamiento, para recibir, buscar, eliminar
 public class ProductRepositoryImpl implements ProductRepository
