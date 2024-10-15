@@ -3,7 +3,9 @@ package com.eva.springboot.di.app.springboot_di.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.eva.springboot.di.app.springboot_di.models.Product;
@@ -22,6 +24,12 @@ public class ProductServiceImpl implements ProductService
     // @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private Environment environment;
+
+    @Value("${config.price.tax}")
+    private Double tax;
+
     /*@Autowired - inyección mediante método setter
     public void setRepository(ProductRepository repository) {
         this.repository = repository;
@@ -37,12 +45,14 @@ public class ProductServiceImpl implements ProductService
     public List<Product> findAll()
     {
         return repository.findAll().stream().map(p -> {
-            Double priceImp = p.getPrice() * 1.25d;
+            System.out.println(environment.getProperty("config.price.tax", Double.class));
+            System.out.println(tax);
+            Double priceTax = p.getPrice() * tax;
             
             // Product newProd = new Product(p.getId(), p.getName(), priceTax.longValue());
             // Creamos una nueva instancia de producto pero con los datos clonados del original, como devuelve un tipo "Object" hacemos un casting para obtener el tipo original "Product"
             Product newProd = (Product) p.clone(); 
-            newProd.setPrice(priceImp.longValue());
+            newProd.setPrice(priceTax.longValue());
             return newProd;
         }).collect(Collectors.toList());
     }
